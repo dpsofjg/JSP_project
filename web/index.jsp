@@ -1,15 +1,10 @@
-<%
-  String header = "Apache Tomcat";
-%>
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>First JSP App</title>
+    <meta charset="UTF-8"/>
+    <title>Colors App</title>
 </head>
 <body>
-<h2><%= header %></h2>
-<p>Today <%= new java.util.Date() %></p>
-<a href="test">Test page</a>
+<a href="colors">Colors page</a>
 </body>
 </html>

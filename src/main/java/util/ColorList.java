@@ -1,4 +1,4 @@
-package servlet;
+package util;
 
 import entities.Color;
 
@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DbTest {
+public class ColorList {
     public static List<Color> getColorList() {
         Connection con;
         Color color;
