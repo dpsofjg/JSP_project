@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DbTest {
-    public List<Color> getColorList() {
+    public static List<Color> getColorList() {
         Connection con;
         Color color;
         List<Color> colorList = new ArrayList<>();
