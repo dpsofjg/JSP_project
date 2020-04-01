@@ -3,20 +3,23 @@ package entities;
 import java.util.Objects;
 
 public class Color {
-    private String color_number;
+    private String colorNumber;
     private String name;
 
-    public Color(String color_number, String name) {
-        this.color_number = color_number;
+    public Color() {
+    }
+
+    public Color(String colorNumber, String name) {
+        this.colorNumber = colorNumber;
         this.name = name;
     }
 
-    public String getColor_number() {
-        return color_number;
+    public String getColorNumber() {
+        return colorNumber;
     }
 
-    public void setColor_number(String color_number) {
-        this.color_number = color_number;
+    public void setColorNumber(String colorNumber) {
+        this.colorNumber = colorNumber;
     }
 
     public String getName() {
@@ -32,19 +35,19 @@ public class Color {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Color color = (Color) o;
-        return color_number.equals(color.color_number) &&
+        return colorNumber.equals(color.colorNumber) &&
                 name.equals(color.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(color_number, name);
+        return Objects.hash(colorNumber, name);
     }
 
     @Override
     public String toString() {
         return "Color{" +
-                "color_number='" + color_number + '\'' +
+                "color_number='" + colorNumber + '\'' +
                 ", name='" + name + '\'' +
                 '}';
     }

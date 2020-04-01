@@ -14,23 +14,24 @@
 
         out.println("<ui>");
         for (Color color : colorList) {
-            out.println("<li>" + color.getColor_number() + " " + color.getName() + "</li>");
+            out.println("<li>" + color.getColorNumber() + " " + color.getName() + "</li>");
         }
         out.println("</ui>");
     } else out.println("<p>There are no colors yet!</p>");
 %>
 
-<%--<table border="1" cellpadding="8" cellspacing="0" style="margin: auto">
+<%--<jsp:useBean id="colorBean" class="controller.ColorsDao"/>
+
+<table border="1" cellpadding="8" cellspacing="0" style="margin: auto">
     <tr>
         <th>Номер</th>
         <th>Цвет</th>
-        <th></th>
-        <th></th>
+        <th>Установка цвета</th>
     </tr>
-        <c:forEach items="${resumes}" var="resume">
+        <c:forEach items="${colorList}" var="color">
             <tr>
-                <td><%=colorList.get(0)%></td>
-                <td><%=colorList.get(1)%></td>
+                <td><%=%></td>
+                <td><%=colorBean.getName()%></td>
             </tr>
         </c:forEach>
 </table>--%>
