@@ -8,7 +8,7 @@ import java.util.List;
 public class ColorsDao {
     private String colorNumber;
     private String name;
-
+/*
    List<Color> colorList = ColorList.getColorList();
 
     public ColorsDao() {
@@ -28,5 +28,5 @@ public class ColorsDao {
 
     public void setName(String name) {
         this.name = name;
-    }
+    }*/
 }

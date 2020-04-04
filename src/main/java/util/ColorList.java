@@ -1,6 +1,7 @@
 package util;
 
 import entities.Color;
+import org.json.JSONArray;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ColorList {
+    public static JSONArray jsonArray = new JSONArray(getColorList());
+
     public static List<Color> getColorList() {
         Connection con;
         Color color;
@@ -17,6 +20,7 @@ public class ColorList {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
             con = DriverManager.getConnection("jdbc:hsqldb:file:D:/DB/colors", "sa", "");
+            //  con = DriverManager.getConnection("jdbc:hsqldb:mem:colors", "sa", "");
             if (con != null) {
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM tsveta");
@@ -35,6 +39,6 @@ public class ColorList {
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-       return colorList;
+        return colorList;
     }
 }

@@ -15,6 +15,13 @@ public class Servlet extends HttpServlet {
 
         request.setAttribute("colorList", ColorList.getColorList());
 
+        System.out.println("colorList= " + ColorList.getColorList());
+      //  ColorList colorList = new ColorList();
+        System.out.println("jsonArray= "+ ColorList.jsonArray);
+
+       // ColorList colorList = new ColorList();
+
+
         request.getRequestDispatcher("WEB-INF/views/colors.jsp").forward(request, response);
     }
 }
