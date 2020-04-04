@@ -1,15 +1,20 @@
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<script>
-    function clickColor(a) {
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
+
+<script type="text/javascript">
+    function makeColor(a) {
+        var objSel = document.getElementById("mySelectId");
         var d;
+    //    document.write(objSel);
         d = document.getElementById('colTag');
-        d.style.color=a;
-    };
+        d.style.backgroundColor = a;
+
+      // table.rows[3].style.backgroundColor = "red";
+    }
 </script>
 
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <html>
 <head>
     <title>Colors</title>
@@ -18,6 +23,7 @@
 
 <%
     JSONArray colorList = (JSONArray) request.getAttribute("colorList");
+    System.out.println("colorList= " + colorList);
 %>
 
 <table border="1" cellpadding="8" cellspacing="0" style="margin: auto">
@@ -32,17 +38,17 @@
             JSONObject colorInfo = colorList.getJSONObject(i);
     %>
 
-    <tr>
+    <tr id="colTag" onclick=makeColor('<%=colorInfo.get("name")%>')>
+   <%-- <tr id="colTag" onclick=makeColor('darkblue')>--%>
+  <%--  <tr style="background-color:<%=colorInfo.get("name")%>">--%>
         <td><%=colorInfo.get("colorNumber")%></td>
         <td><%=colorInfo.get("name")%></td>
         <td>
-            <p id="colTag" onclick="clickColor('red')"><%=colorInfo.get("name")%></p>
-            <p>
-            <label for="color"></label>
-            <select id="color" name="color">
-                <option value="color"><%=colorInfo.get("name")%></option>
-            </select>
-            </p>
+            <form name="myForm">
+                <select id="mySelectId" name="mySelect">
+                    <option value="color"><%=colorInfo.get("name")%></option>
+                </select>
+            </form>
         </td>
 
     </tr>
