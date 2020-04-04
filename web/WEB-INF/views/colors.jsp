@@ -1,6 +1,15 @@
-<%@ page import="java.util.List" %>
-<%@ page import="entities.Color" %>
+<%@ page import="org.json.JSONArray" %>
+<%@ page import="org.json.JSONObject" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<script>
+    function clickColor(a) {
+        var d;
+        d = document.getElementById('colTag');
+        d.style.color=a;
+    };
+</script>
+
+<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 <html>
 <head>
     <title>Colors</title>
@@ -8,33 +17,51 @@
 <body>
 
 <%
-    List<Color> colorList = (List<Color>) request.getAttribute("colorList");
-
-    if (colorList != null && !colorList.isEmpty()) {
-
-        out.println("<ui>");
-        for (Color color : colorList) {
-            out.println("<li>" + color.getColorNumber() + " " + color.getName() + "</li>");
-        }
-        out.println("</ui>");
-    } else out.println("<p>There are no colors yet!</p>");
+    JSONArray colorList = (JSONArray) request.getAttribute("colorList");
 %>
-
-<%--<jsp:useBean id="colorBean" class="controller.ColorsDao"/>
 
 <table border="1" cellpadding="8" cellspacing="0" style="margin: auto">
     <tr>
-        <th>Номер</th>
-        <th>Цвет</th>
-        <th>Установка цвета</th>
+        <td>colorNumber</td>
+        <td>name</td>
+        <td></td>
     </tr>
-        <c:forEach items="${colorList}" var="color">
-            <tr>
-                <td><%=%></td>
-                <td><%=colorBean.getName()%></td>
-            </tr>
-        </c:forEach>
-</table>--%>
+
+    <%
+        for(int i = 0; i < colorList.length(); i++){
+            JSONObject colorInfo = colorList.getJSONObject(i);
+    %>
+
+    <tr>
+        <td><%=colorInfo.get("colorNumber")%></td>
+        <td><%=colorInfo.get("name")%></td>
+        <td>
+            <p id="colTag" onclick="clickColor('red')"><%=colorInfo.get("name")%></p>
+            <p>
+            <label for="color"></label>
+            <select id="color" name="color">
+                <option value="color"><%=colorInfo.get("name")%></option>
+            </select>
+            </p>
+        </td>
+
+    </tr>
+
+<%--    <tr style="background-color:<%=colorInfo.get("name")%>">
+        <td><%=colorInfo.get("colorNumber")%></td>
+        <td><%=colorInfo.get("name")%></td>
+        <td> <p>
+            <label for="color">Выберите цвет:</label>
+            <select id="color" name="color">
+                <option value="color"><%=colorInfo.get("name")%></option>
+            </select>
+        </p></td>
+    </tr>--%>
+
+    <%
+        }
+    %>
+</table>
 
 </body>
 </html>
