@@ -1,27 +1,14 @@
 <%@ page import="org.json.JSONArray" %>
 <%@ page import="org.json.JSONObject" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>--%>
 
 <script type="text/javascript">
-    function makeColor(place) {
-     /*   document.write(place);*/
-     /*   document.write(this.options[this.selectedIndex].value);*/
-     /*   document.write(document.getElementById("colorId").rows[0].cells[1].innerHTML);*/
-        document.write(document.getElementById("colTag").innerText);
+    function makeColor(place, color) {
         if (place === 'bg'){
-            document.getElementById('colTag').style.backgroundColor = 'red'}
-        else {document.getElementById('colTag').style.color = 'red'}
+            document.getElementById(color).style.backgroundColor = color}
+        else {document.getElementById(color).style.color = color}
     }
 </script>
-
-<%--<script type="text/javascript">
-    function SelectType(){
-        if (this.options[this.selectedIndex].value == "1" ){
-            document.getElementById('colTag').style.backgroundColor = 'green'}
-    else {document.getElementById('colTag').style.backgroundColor = 'red'}
-    }
-</script>--%>
 
 <html>
 <head>
@@ -45,19 +32,13 @@
             JSONObject colorInfo = colorList.getJSONObject(i);
     %>
 
-    <tr id="colTag">
-    <%--<tr id="colTag" onclick=makeColor('<%=colorInfo.get("name")%>')>--%>
-   <%-- <tr bgcolor="red" onMouseOver=this.style.backgroundColor='blue' onMouseOut=this.style.backgroundColor='red'>--%>
-    <%-- <tr id="colTag" onclick=makeColor('darkblue')>--%>
-  <%--  <tr style="background-color:<%=colorInfo.get("name")%>">--%>
+    <tr id=<%=colorInfo.get("name")%>>
         <td><%=colorInfo.get("colorNumber")%></td>
-        <td id="colorId"><%=colorInfo.get("name")%></td>
+        <td><%=colorInfo.get("name")%></td>
         <td>
             <form name="myForm">
-              <%--  <select id="mySelectId" name="mySelect">--%>
-                <select name="mySelect" onChange=makeColor(this.options[this.selectedIndex].value)>
-               <%-- <select id="mySelectId" name="mySelect" onChange=makeColor('<%=colorInfo.get("name")%>')>--%>
-                    <option value="NNN" >ttt</option>
+                <select name="mySelect" onChange=makeColor(this.options[this.selectedIndex].value,'<%=colorInfo.get("name")%>')>
+                    <option value="" >Choose color</option>
                     <option value="bg" >Background</option>
                     <option value="lt" >Letters</option>
                 </select>
