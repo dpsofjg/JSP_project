@@ -4,9 +4,11 @@
 
 <script type="text/javascript">
     function makeColor(place, color) {
-        if (place === 'bg'){
-            document.getElementById(color).style.backgroundColor = color}
-        else {document.getElementById(color).style.color = color}
+        if (place === 'bg') {
+            document.getElementById(color).style.backgroundColor = color
+        } else {
+            document.getElementById(color).style.color = color
+        }
     }
 </script>
 
@@ -28,20 +30,25 @@
     </tr>
 
     <%
-        for(int i = 0; i < colorList.length(); i++){
+        for (int i = 0; i < colorList.length(); i++) {
             JSONObject colorInfo = colorList.getJSONObject(i);
     %>
 
-    <tr id=<%=colorInfo.get("name")%>>
-        <td><%=colorInfo.get("colorNumber")%></td>
-        <td><%=colorInfo.get("name")%></td>
+    <tr id='<%=colorInfo.get("name")%>'>
+        <td><%=colorInfo.get("colorNumber")%>
+        </td>
+        <td><%=colorInfo.get("name")%>
+        </td>
         <td>
             <form name="myForm">
-                <select name="mySelect" onChange=makeColor(this.options[this.selectedIndex].value,'<%=colorInfo.get("name")%>')>
-                    <option value="" >Choose color</option>
-                    <option value="bg" >Background</option>
-                    <option value="lt" >Letters</option>
-                </select>
+                <label>
+                    <select name="mySelect"
+                            onChange=makeColor(this.options[this.selectedIndex].value,'<%=colorInfo.get("name")%>')>
+                        <option value="">Choose color</option>
+                        <option value="bg">Background</option>
+                        <option value="lt">Letters</option>
+                    </select>
+                </label>
             </form>
         </td>
 

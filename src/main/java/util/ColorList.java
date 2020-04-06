@@ -20,7 +20,6 @@ public class ColorList {
         try {
             Class.forName("org.hsqldb.jdbcDriver");
             con = DriverManager.getConnection("jdbc:hsqldb:file:D:/DB/colors", "sa", "");
-            //  con = DriverManager.getConnection("jdbc:hsqldb:mem:colors", "sa", "");
             if (con != null) {
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT * FROM tsveta");
